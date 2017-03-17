@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>简历</title>
+
+    <link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <style type="text/css">
+        ul{
+            list-style: none;
+        }
+        .section1,.section2,.section3,.section4{
+            background: url(img/bg.jpg);
+            background-size: cover;
+            text-align: center;
+        }
+        #menu{
+            width: 100%;
+            background-color: rgba(33,33,33,.3);
+            margin: 0;
+            padding: 0;
+            position: fixed;
+            left: 0;
+            top:0;
+            z-index: 70;
+
+        }
+        #menu .head{
+
+            display: inline-block;
+            width: 70px;
+            height: 70px;
+            border: 2px solid #f0f0f0;
+            border-radius: 35px;
+            position: absolute;
+            top:0;
+            left:25px;
+            background:url(img/head.png) center center no-repeat;
+            background-size: cover;
+            z-index: 71;
+            cursor: pointer;
+        }
+         #menu .head:hover{
+            box-shadow: 0 0 5px 2px #bcb;
+         }
+     
+       #menu .intro{
+            position: absolute;
+            top: 25px;
+            left: 120px;
+            width: 100px;
+            height: 20px;
+            z-index: 71;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            transition: all 1s;
+
+       }
+        #menu .intro .forword{
+            display: inline-block;
+            font-size: 18px;
+            font-weight: bold;
+            transform: translateZ(10px);
+        }
+        #menu .intro .top{
+            display: inline-block;
+            font-size: 18px;
+            text-shadow: 1px 1px 4px #c0c0c0;
+            transform: rotateX(90deg);
+        }
+        #menu .intro:hover{
+            transform: rotateX(-90deg);
+        }
+
+        #menu ul{
+            float: right;
+            list-style: none;
+        }
+        #menu ul li{
+            float: left;
+           margin: 0 30px 0 0;
+           font-size: 16px;
+           font-weight: bold;
+
+
+        }
+        #menu a{
+            float: left;
+            padding: 10px 20px;
+            color: #fff;
+            text-decoration: none;
+        }
+        #menu .active {
+            border-bottom: 4px solid #caa;
+        }
+        /*//第一页*/
+        .section1 .myHead{
+            width: 200px;
+            height: 200px;
+            border: 2px solid rgba(22,133,23,.4);
+            border-radius: 100px;
+            background:url(img/me.jpg) center top no-repeat;
+            background-size: cover;
+            
+            transition: all 1s;
+            transform: translateY(2000px);
+        }
+        .section1 .myHead:hover{
+            box-shadow:0 0 8px #012fff;
+        }
+         .section1 .myHead::after{
+            content: "";
+            width: 500px;
+            height: 3px;
+            position: absolute;
+            bottom: -10px;
+            left: -150px;
+            border-bottom:4px solid #111111;
+         }
+        .section1 .say{
+            transition: all 2s;
+            transition-delay: 0.3s;
+            transform: translateY(2000px);
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .section1 .introduce{
+            transition: all 2s;
+            transition-delay: 0.6s;
+            transform: translateY(2000px);
+            font-size: 16px;
+            
+        }
+        .section.current .myHead{
+            transform: translateX(550px) translateY(100px);
+        }
+        .section.current .say{
+            transform: translateX(-20px) translateY(110px);
+        }
+        .section.current .introduce{
+            transform: translateX(-20px) translateY(120px);
+        }
+        .section2 .aboutMe>span{
+            transform: translateY(2000px);
+        }
+        .section2.current .aboutMe>span{
+            transform: translateY(0);
+        }
+        .section3 .skill-head{
+           transform:rotate(0);
+           transition: all 1s;
+        }
+        .section3.current .skill-head{
+            transform: rotate(360deg);
+        }
+        .section4 .status h2{
+            transform-origin: left bottom;
+            transform: rotate(45deg);
+        }
+        .section4.current .status h2{
+            animation: mypr 1s forwards;
+        }
+        @keyframes mypr{
+            0%{
+                transform: rotate(45deg);
+            }
+            50%{
+                transform: rotate(-30deg);
+            }
+            100%{
+                transform: rotate(0);
+            }
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.fullPage.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $('#demo').fullpage({
+                 continuousVertical: true,//循环
+                 anchors:['page1','page2','page3','page4'],
+                 menu:'#menu',
+                 afterLoad:function(link,index){
+                    $(".section").removeClass('current');
+                    setTimeout(function(){$(".section").eq(index-1).addClass('current')},200);
+                 }
+            });
+        })
+    </script>
+</head>
+<body>
+    <div id="menu">
+        <span class="head"></span>
+        <div class="intro">
+            <span class="forword">个人简历</span><span class="top">Web前端</span>
+        </div>
+        
+        <ul>
+            <li data-menuanchor="page1" class="active"><a href="#page1">我是谁</a></li>
+            <li data-menuanchor="page2"><a href="#page2">关于我</a></li>
+            <li data-menuanchor="page3"><a href="#page3">我的技能</a></li>
+            <li data-menuanchor="page4"><a href="#page4">我的作品</a></li>
+            
+        </ul>
+    </div>
+    <div id="demo">
+        <div class="section section1">
+            <div class="myHead">
+                
+            </div>
+            <div class="say">得之我幸，失之我命</div>
+            <div class="introduce">
+                <p class="p1">我叫陈佳唯</p>
+                <p class="p2">22岁</p>
+                <p class="p3">前端开发</p>
+                <p class="p4">Kiri7012@163.com</p>
+            </div>
+        </div>
+        <div class="section section2">
+            <div class="aboutMe">
+                <span>关于我</span>
+                <div class="icoAll">
+                     <div class="ed">
+                        <ul>
+                            <li><img src="img/education.png" alt=""></li>
+                            
+                        </ul>
+                          <span class="up">学历</span>
+                        <span class="down">本科</span>
+                     </div>
+                     <div class="age">
+                        <ul>
+                            <li><img src="img/age.png" alt=""></li>
+                            
+                        </ul>
+                        <span class="up">年龄</span>
+                        <span class="down">25岁</span>
+                     </div>
+                     <div class="address"> <ul>
+                            <li><img src="img/location.png" alt=""></li>
+                            
+                        </ul>
+                        <span class="up">坐标</span>
+                        <span class="down">武汉</span>
+                    </div>
+                     <div class="attr"> <ul>
+                            <li><img src="img/status.png" alt=""></li>
+                            </ul>
+                            <span class="up">状态</span>
+                            <span class="down">应届生</span>
+                    </div>
+                </div>
+                <div class="intro-main">
+                    <p>喜欢优雅的代码</p>
+                    <p>前端层出不穷的框架让人兴奋，但有时有抓狂，而不同的框架背后，思路却在逐渐统一</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section section3">
+            <div class="skill">
+                <div class="skill-head">专业技能</div>
+                <p>在理解原生js基础之上，熟悉jq,ng，bootstrap等框架，掌握ajax原理，能还原设计师意图。对node.js有一定的理解，能写出简单的nodejs。</p>
+                <div class="skill-img">
+                    <div class="html-">
+                        <span data-text="HTML"></span>
+                        <p>▲</p>
+                    </div>
+                    <div class="css-"><span data-text="&nbsp;CSS"></span><p>▲</p></div>
+                    <div class="js-"><span data-text="&nbsp;&nbsp;JS&nbsp;"></span><p>▲</p></div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="section section4">
+            <div class="status">
+                <h2>我的作品</h2>
+                <table>
+                    <tr>
+                        <td>京东移动端页面<span>(浏览器调成手机端屏幕大小)</span></td>
+                        <td><a href="./infor/JDmoblie/index.html" target="_banks"><img src="img/demo-link.png"></a></td>
+                    </tr>
+                    <tr>
+                        <td>亲亲网首页</td>
+                        <td><a href="./infor/qinqin/index.html" target="_banks"><img src="img/demo-link.png"></a></td>
+                    </tr>
+                    <tr>
+                        <td>用angularJS写的ToDoList</td>
+                        <td><a href="./infor/todomvc/index.html" target="_banks"><img src="img/demo-link.png"></a></td>
+                    </tr>
+                    <tr>
+                        <td>CSS旋转轮播图+H5新标签背景音乐</td>
+                        <td><a href="./infor/transform/index.html" target="_banks"><img src="img/demo-link.png"></a></td>
+                    </tr>
+                       <tr>
+                        <td>Bootstrap框架写的响应式页面</td>
+                        <td><a href="./infor/WeiJinsuo/index.html" target="_banks"><img src="img/demo-link.png"></a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
